@@ -168,4 +168,20 @@ class Solution {
         }
         return -1;
     }
+
+    public int findDuplicate(int[] nums) {
+        int f=0;
+        int s=0;
+        do{
+            f=nums[nums[f]];
+            s=nums[s];
+        }while(nums[nums[f]]!=nums[s]);
+        f=nums[s];
+        s=0;
+        while(nums[s]!=nums[f]){
+            s=nums[s];
+            f=nums[f];
+        }
+        return nums[s];
+    }
 }
