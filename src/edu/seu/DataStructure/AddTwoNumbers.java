@@ -1,4 +1,4 @@
-package edu.seu;
+package edu.seu.DataStructure;
 
 public class AddTwoNumbers {
     int carry=0;

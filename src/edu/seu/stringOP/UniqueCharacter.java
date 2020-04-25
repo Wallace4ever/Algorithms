@@ -1,4 +1,4 @@
-package edu.seu;
+package edu.seu.stringOP;
 
 import java.util.Scanner;
 import java.util.ArrayList;

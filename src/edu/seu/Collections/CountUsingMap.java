@@ -1,4 +1,4 @@
-package edu.seu;
+package edu.seu.Collections;
 
 import java.util.*;
 

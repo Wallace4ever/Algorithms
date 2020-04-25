@@ -1,4 +1,4 @@
-package edu.seu;
+package edu.seu.DFS;
 
 /**
  * 矩阵中的路径：

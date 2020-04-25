@@ -1,4 +1,4 @@
-package edu.seu;
+package edu.seu.DataStructure;
 
 import java.util.Scanner;
 class Node{
