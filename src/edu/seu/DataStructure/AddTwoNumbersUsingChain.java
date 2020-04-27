@@ -1,13 +1,13 @@
 package edu.seu.DataStructure;
 import java.util.*;
-public class ListNode {
+ class ListNode {
      int val;
      ListNode next;
      ListNode(int x) { val = x; }
      ListNode() { }
 }
 
-class Solution {
+public class AddTwoNumbersUsingChain {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {//两数之和
         int jinwei=0;
         ListNode result=new ListNode(0);
