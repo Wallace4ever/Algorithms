@@ -1,4 +1,4 @@
-package edu.seu.DataStructure;
+package edu.seu.Chain;
 
 public class DeleteSameNode {
     public ListNode deleteDuplication(ListNode pHead) {

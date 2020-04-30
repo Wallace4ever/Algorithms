@@ -1,4 +1,4 @@
-package edu.seu.DataStructure;
+package edu.seu.Chain;
 
 /**
  * 判断链表是否有环，并返回环开始的节点
