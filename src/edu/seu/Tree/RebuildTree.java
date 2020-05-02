@@ -1,6 +1,8 @@
 package edu.seu.Tree;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -12,7 +14,7 @@ public class RebuildTree {
         int[] pre={1,2,4,7,3,5,6,8};
         int[] in={4,7,2,1,5,3,8,6};
         TreeNode root=r.reConstructBinaryTree(pre,in);
-        r.preOrder(root);
+/*        r.preOrder(root);
         System.out.println();
         r.preOrder2(root);
         System.out.println();
@@ -20,7 +22,8 @@ public class RebuildTree {
         System.out.println();
         r.inOrder2(root);
         r.postOrder(root);
-        System.out.println();
+        System.out.println();*/
+        r.levelOrder(root);
 //        r.postOrder2(root);
     }
     public TreeNode reConstructBinaryTree(int [] pre,int [] in) {
@@ -40,6 +43,23 @@ public class RebuildTree {
             }
         }
         return root;
+    }
+
+    /**
+     * 层次遍历
+     */
+    public void levelOrder(TreeNode node){
+        if (node==null) return;
+        Queue<TreeNode> q=new LinkedList<>();
+        q.offer(node);
+        while (!q.isEmpty()){
+            TreeNode tmp=q.poll();
+            System.out.print(tmp.val+" ");
+            if (tmp.left!=null)
+                q.offer(tmp.left);
+            if (tmp.right!=null)
+                q.offer(tmp.right);
+        }
     }
 
     /**
