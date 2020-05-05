@@ -1,4 +1,4 @@
-package edu.seu.DPandRecursion;
+package edu.seu.DP_Recursion;
 
 import java.math.BigInteger;
 import java.util.Scanner;

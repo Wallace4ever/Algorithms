@@ -1,4 +1,4 @@
-package edu.seu.stringOP;
+package edu.seu.StringOP;
 import java.util.regex.*;
 
 /**

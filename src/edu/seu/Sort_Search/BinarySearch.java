@@ -1,4 +1,4 @@
-package edu.seu;
+package edu.seu.Sort_Search;
 
 public class BinarySearch {
     public static int iterative(int[] a, int data){

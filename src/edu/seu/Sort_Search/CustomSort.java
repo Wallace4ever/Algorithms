@@ -1,4 +1,4 @@
-package edu.seu;
+package edu.seu.Sort_Search;
 
 public class CustomSort {
     public static int[] sort(int[] a, int mode){

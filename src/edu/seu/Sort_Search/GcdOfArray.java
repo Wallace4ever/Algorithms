@@ -1,4 +1,4 @@
-package edu.seu;
+package edu.seu.Sort_Search;
 import java.util.Arrays;
 import java.util.Scanner;
 
