@@ -8,9 +8,9 @@ import java.util.regex.*;
  */
 public class JudgeDigit {
     public boolean isNumeric(char[] str) {
-        String s=new String(str);
-        Pattern p=Pattern.compile("[+\\-]?\\d*(\\.\\d+)?([Ee][+\\-]?\\d+)?");
-        Matcher m=p.matcher(s);
+        String s = new String(str);
+        Pattern p = Pattern.compile("[+\\-]?\\d+(\\.\\d+)?([Ee][+\\-]?\\d+)?");
+        Matcher m = p.matcher(s);
         return m.matches();
     }
 }
