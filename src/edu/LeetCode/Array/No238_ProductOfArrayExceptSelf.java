@@ -1,6 +1,6 @@
 package edu.LeetCode.Array;
 
-public class N0238_ProductOfArrayExceptSelf {
+public class No238_ProductOfArrayExceptSelf {
     public int[] productExceptSelf(int[] nums) {
         int[] result=new int[nums.length];
         int k=1;
