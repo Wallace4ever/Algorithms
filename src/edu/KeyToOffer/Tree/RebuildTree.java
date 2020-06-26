@@ -1,9 +1,6 @@
 package edu.KeyToOffer.Tree;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * 给出一个树的前序遍历和中序遍历结果，还原该二叉树
@@ -66,25 +63,25 @@ public class RebuildTree {
      * 前中后序遍历的递归写法
      */
     public void preOrder(TreeNode node){
-        System.out.print(node.val+" ");
-        if (node.left!=null)
+        if (node != null) {
+            System.out.print(node.val+" ");
             preOrder(node.left);
-        if (node.right!=null)
             preOrder(node.right);
+        }
     }
     public void inOrder(TreeNode node){
-        if (node.left!=null)
+        if (node != null) {
             inOrder(node.left);
-        System.out.print(node.val+" ");
-        if (node.right!=null)
+            System.out.print(node.val+" ");
             inOrder(node.right);
+        }
     }
     public void postOrder(TreeNode node){
-        if (node.left!=null)
+        if (node != null) {
             postOrder(node.left);
-        if (node.right!=null)
             postOrder(node.right);
-        System.out.print(node.val+" ");
+            System.out.print(node.val+" ");
+        }
     }
     /**
      * 前中后序遍历的非递归写法
@@ -119,29 +116,22 @@ public class RebuildTree {
             node=node.right;
         }
     }
-    public void postOrder2(TreeNode node){
-        // TODO: 5/1/20 写法有bug，根节点的右子树会反复出入栈
-        Stack<TreeNode> s=new Stack<>();
-        while(true){
-            if (node!=null){
-                s.push(node);
-                node=node.left;
-            }else {
-                if (s.empty()){
-                    System.out.println("Stack empty");
-                    return;
-                }else if (s.peek().right==null){
-                    node=s.pop();
-                    System.out.println(node.val+" ");
-                    if (node==s.peek().right){
-                        System.out.println(s.peek().val);
-                        s.pop();
-                    }
-                }
-                if (!s.empty())
-                    node=s.peek().right;
-                else
-                    node=null;
+    public void postorderTraversal(TreeNode root) {
+        if(root==null) return;
+        Deque<TreeNode> stack = new LinkedList<>();
+        stack.push(root);
+        TreeNode curNode,lastPopedNode=null;
+        while(stack.size()!=0){
+            curNode=stack.peek();
+            if((curNode.left==null&&curNode.right==null)||
+               (lastPopedNode!=null&&(lastPopedNode==curNode.left||lastPopedNode==curNode.right))){
+                System.out.print(stack.pop().val+" ");;
+                lastPopedNode=curNode;
+            }else{
+                if(curNode.right!=null)
+                    stack.push(curNode.right);
+                if(curNode.left!=null)
+                    stack.push(curNode.left);
             }
         }
     }
