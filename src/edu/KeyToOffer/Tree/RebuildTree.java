@@ -121,7 +121,7 @@ public class RebuildTree {
         Deque<TreeNode> stack = new LinkedList<>();
         stack.push(root);
         TreeNode curNode,lastPopedNode=null;
-        while(stack.size()!=0){
+        while(!stack.isEmpty()){
             curNode=stack.peek();
             if((curNode.left==null&&curNode.right==null)||
                (lastPopedNode!=null&&(lastPopedNode==curNode.left||lastPopedNode==curNode.right))){
