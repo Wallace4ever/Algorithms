@@ -26,4 +26,20 @@ public class No153_FindMinimumInRotatedSortedArray {
         }
         return -1;
     }
+
+    public int findMin2(int[] nums) {
+        int left=0,right=nums.length-1;
+        while (left <= right) {
+            //实际上最终left==right时就返回了，不会跳出循环
+            if (nums[left]<=nums[right])
+                return nums[left];
+            int mid=left+((right-left)>>1);
+            if (nums[mid] >= nums[left]) {//如果左侧有序（单调增），则最小值一定在右侧
+                left=mid+1;
+            } else if (nums[mid] < nums[left]) {//左侧不是单调增，最小值在左侧（不排除mid）
+                right=mid;
+            }
+        }
+        return -1;
+    }
 }
