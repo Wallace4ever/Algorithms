@@ -59,6 +59,16 @@ class SelectSort{
 }
 
 class InsertSort{
+    public void insertSort(int[] array){
+        for(int i = 1;i < array.length; i++){
+            for(int j = i; j > 0 && array[j] < array[j-1]; j--){
+                int temp = array[j];
+                array[j] = array[j - 1];
+                array[j - 1] = temp;
+            }
+        }
+    }
+    //真正的插入排序并不需要用额外的链表真正的“插入”，而是直接交换到对应的位置即可
     public static int[] sort(int[] a){
         class InsertList{//内部有序链表类，便于插入
             int value;
@@ -163,7 +173,7 @@ class QuickSort{
     }
 }
 
-/*
+/*更完善的排序见edu.KeyToOffer.Array包下的ReviewArraySort.java
 class ShellSort{
     public static int[] sort(int[] a){
 
