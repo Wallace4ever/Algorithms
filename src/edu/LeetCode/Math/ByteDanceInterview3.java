@@ -1,62 +1,50 @@
 package edu.LeetCode.Math;
 
+import org.junit.Test;
+
+import java.util.Arrays;
+
 /**
  * 给出正整数区间[a,b]，找出区间中每一个字面不含 3 5 8 的数字的总数
  */
 public class ByteDanceInterview3 {
-    //备查表，table[i]表示0到1*power(10,i)范围内包含数字 3 5 8 的整数个数
-    private static int[] table;
-
-    public static void main(String[] args) {
-        System.out.println(count(0,33));
-        System.out.println(count(0,76954));
-        System.out.println(count(76952,76954));
+    public int getCount(int a, int b) {
+        int indexA = 0, indexB = 0;
+        int[] arrA = new int[10], arrB = new int[10];
+        while ( a > 0) {
+            arrA[indexA++] = a % 10;
+            a /= 10;
+        }
+        while ( b > 0) {
+            arrB[indexB++] = b % 10;
+            b /= 10;
+        }
+        return getCountFrom0(arrB, indexB - 1) - getCountFrom0(arrA, indexA - 1) + 1;
     }
 
-    //调用的方法接口，找到(a,b)开区间内包含数字 3 5 8 的整数个数
-    public static int count(int a ,int b){
-        int temp=b,bit=0;
-        while(temp!=0){
-            temp/=10;
-            bit++;
+    private int getCountFrom0(int[] arr, int index) {
+        int result = 0;
+        while (index >= 0) {
+            int qualifiedNumbers = 0;
+            if (arr[index] < 3)
+                qualifiedNumbers = arr[index];
+            else if (arr[index] < 5)
+                qualifiedNumbers = arr[index] - 1;
+            else if (arr[index] < 8)
+                qualifiedNumbers = arr[index] - 2;
+            else
+                qualifiedNumbers = arr[index] - 3;
+            result += qualifiedNumbers * (int) Math.pow(7, index);
+
+            if (arr[index] == 3 || arr[index] == 5 || arr[index] == 8)
+                Arrays.fill(arr, 0, index, 9);
+            index--;
         }
-        table=bit>2?new int[bit+1]:new int[3];
-        table[0]=0;
-        table[1]=1;
-        table[2]=3;
-        table=prepare(bit,table);
-        //得到的是[0,b]闭区间减去[0,a]闭区间内包含目标数的数量
-        return getContainCount(b)-getContainCount(a);
+        return result + 1;
     }
 
-    //得出0到当前数字中包含3 5 8 的数字的个数
-    private static int getContainCount(int a){
-        int countA=0,bitOfA=1;
-        while(a!=0){
-            int curr=a%10;
-            int sum=0;
-            if(curr>=8){
-                sum=3*(int)Math.pow(10,bitOfA-1)+(curr-3)*table[bitOfA-1];
-            }else if(curr>=5){
-                sum=2*(int)Math.pow(10,bitOfA-1)+(curr-2)*table[bitOfA-1];
-            }else if(curr>=3){
-                sum=(int)Math.pow(10,bitOfA-1)+(curr-1)*table[bitOfA-1];
-            }else{
-                sum=curr*table[bitOfA-1];
-            }
-            countA+=sum;
-            bitOfA++;
-            a/=10;
-        }
-        return countA;
-    }
-
-    //准备表
-    private static int[] prepare(int height,int[] table){
-        if(height>=3){
-            table=prepare(height-1,table);
-            table[height]=3*(int)Math.pow(10,height-2)+7*table[height-1];
-        }
-        return table;
+    @Test
+    public void test() {
+        System.out.println(getCount(1,14));
     }
 }

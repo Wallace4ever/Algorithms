@@ -6,11 +6,11 @@ package edu.LeetCode.Math;
  */
 public class OneAddToN {
     public int sumNums(int n) {
-        return multiply(n,n+1)>>1;
+        return multiply(n, n + 1) >> 1;
     }
 
     private int multiply(int n, int m){
-        boolean b=(n>1)&&(((n&1)==1&&(m=m+multiply(n>>1,m<<1))>0)||((n&1)==0)&&(m=multiply(n>>1,m<<1))>0);
+        boolean b = (n > 1) && (((n & 1) == 1 && (m = m + multiply(n >> 1, m << 1)) > 0) || ((n & 1) == 0) && (m = multiply(n >> 1, m << 1)) > 0);
         return m;
     }
 }
