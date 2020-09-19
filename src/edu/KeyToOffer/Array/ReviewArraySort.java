@@ -11,7 +11,7 @@ public class ReviewArraySort {
     public  void test() {
         int[] arr = new int[]{14, 52, 26, 3, 67, 9, 86, 48, 10, 70, 1};
         System.out.println(Arrays.toString(arr));
-        countSort(arr);
+        heapSort(arr);
         System.out.println(Arrays.toString(arr));
     }
 
@@ -186,6 +186,40 @@ public class ReviewArraySort {
                 }
             }
             divider *= 10;
+        }
+    }
+
+    //堆排序
+    public void heapSort(int[] array) {
+        int n = array.length;
+        //建堆
+        for (int i = n / 2; i >= 0; i--) {
+            sink(array, i, n);
+        }
+
+        for (int i = n - 1; i > 0; i--) {
+            //交换堆顶的最大值到数组尾部
+            swap(array, i, 0);
+            //对剩余的n-1大小的堆的堆顶进行下沉操作
+            sink(array, 0, i);
+        }
+    }
+
+    private void sink(int[] array, int i, int n) {
+        while (i * 2 + 2 < n) {
+            int leftChild = i * 2 + 1, rightChild = i * 2 + 2;
+            int maxChild = Math.max(array[leftChild], array[rightChild]);
+            if (maxChild > array[i]) {
+                if (maxChild == array[leftChild]) {
+                    swap(array, leftChild, i);
+                    i = leftChild;
+                } else {
+                    swap(array, rightChild, i);
+                    i = rightChild;
+                }
+            } else {
+                break;
+            }
         }
     }
 }
